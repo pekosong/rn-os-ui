@@ -18,7 +18,7 @@ inspired from tailwind and chakra ui
 
 ## **3. Props**
 |Prop|Css Prop|Type| 
-|:---|:---:|---:| 
+|:---:|:---:|:---:| 
 |d|display|string| 
 |m|margin|string or number| 
 |p|padding|string or number| 
