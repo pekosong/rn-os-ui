@@ -1,30 +1,26 @@
 import React from "react";
 import {
-  SafeAreaView,
-  View as BaseView,
-  ViewProps,
+  TouchableOpacity as BaseTouchableOpacity,
+  TouchableOpacityProps,
   ViewStyle,
   StyleProp,
 } from "react-native";
 import { Color } from "../constants/color";
 import { ExtendStyle } from "../type/style";
-import { SafeAreaViewProps } from "react-native-safe-area-context";
 
-interface Props extends ViewProps, SafeAreaViewProps, ViewStyle, ExtendStyle {
+interface Props extends TouchableOpacityProps, ViewStyle, ExtendStyle {
   d?: "none" | "flex";
   bg?: string | undefined;
-  safe?: boolean;
 }
 
 const View: React.FC<Props> = ({
   //base
   d,
   bg,
-  safe,
-  shadow,
   overflow,
   opacity,
   zIndex,
+  shadow,
   //padding
   p,
   pt,
@@ -93,6 +89,9 @@ const View: React.FC<Props> = ({
   if (bg === "gray3") ViewStyle["backgroundColor"] = Color.gray3;
   if (bg === "gray4") ViewStyle["backgroundColor"] = Color.gray4;
   if (bg === "gray5") ViewStyle["backgroundColor"] = Color.gray5;
+  if (opacity) ViewStyle["opacity"] = opacity;
+  if (zIndex) ViewStyle["zIndex"] = zIndex;
+  if (overflow) ViewStyle["overflow"] = overflow;
 
   // shadow
   if (shadow === "sm") {
@@ -116,10 +115,6 @@ const View: React.FC<Props> = ({
     ViewStyle["shadowOpacity"] = 0.32;
     ViewStyle["shadowRadius"] = 5.46;
   }
-  if (opacity) ViewStyle["opacity"] = opacity;
-  if (zIndex) ViewStyle["zIndex"] = zIndex;
-  if (overflow) ViewStyle["overflow"] = overflow;
-
   // flex
   if (f) ViewStyle["flex"] = f;
   if (align) ViewStyle["alignItems"] = align;
@@ -204,17 +199,10 @@ const View: React.FC<Props> = ({
   if (my) ViewStyle["marginVertical"] = parseInt(my as string);
   if (mx) ViewStyle["marginHorizontal"] = parseInt(mx as string);
 
-  if (safe) {
-    return (
-      <SafeAreaView style={{ ...ViewStyle, ...(style as any) }} {...rest}>
-        {children}
-      </SafeAreaView>
-    );
-  }
   return (
-    <BaseView style={{ ...ViewStyle, ...(style as any) }} {...rest}>
+    <BaseTouchableOpacity style={{ ...ViewStyle, ...(style as any) }} {...rest}>
       {children}
-    </BaseView>
+    </BaseTouchableOpacity>
   );
 };
 

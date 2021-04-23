@@ -1,11 +1,11 @@
 {
   "name": "rn-os-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react native ui library",
   "author": {
-    "name": "pekosong",
-    "email": "peko22@naver.com",
-    "url": "http://sideeffect.kr/"
+    "name": "songchanggeun",
+    "email": "pekopeko11@gmail.com",
+    "url": "git://github.com/pekosong/rn-os-ui.git"
   },
   "repository": {
     "type": "git",

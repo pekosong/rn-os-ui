@@ -1,26 +1,22 @@
 import React from "react";
 import {
-  SafeAreaView,
-  View as BaseView,
-  ViewProps,
+  ScrollView as BaseScrollView,
+  ScrollViewProps,
   ViewStyle,
   StyleProp,
 } from "react-native";
 import { Color } from "../constants/color";
 import { ExtendStyle } from "../type/style";
-import { SafeAreaViewProps } from "react-native-safe-area-context";
 
-interface Props extends ViewProps, SafeAreaViewProps, ViewStyle, ExtendStyle {
+interface Props extends ScrollViewProps, ViewStyle, ExtendStyle {
   d?: "none" | "flex";
   bg?: string | undefined;
-  safe?: boolean;
 }
 
 const View: React.FC<Props> = ({
   //base
   d,
   bg,
-  safe,
   shadow,
   overflow,
   opacity,
@@ -78,9 +74,11 @@ const View: React.FC<Props> = ({
   //etc
   children,
   style,
+  contentContainerStyle,
   ...rest
 }) => {
   const ViewStyle: StyleProp<ViewStyle> = {};
+  const ContentStyle: StyleProp<ViewStyle> = {};
 
   // view Style
   if (d) ViewStyle["display"] = d;
@@ -93,6 +91,9 @@ const View: React.FC<Props> = ({
   if (bg === "gray3") ViewStyle["backgroundColor"] = Color.gray3;
   if (bg === "gray4") ViewStyle["backgroundColor"] = Color.gray4;
   if (bg === "gray5") ViewStyle["backgroundColor"] = Color.gray5;
+  if (opacity) ViewStyle["opacity"] = opacity;
+  if (zIndex) ViewStyle["zIndex"] = zIndex;
+  if (overflow) ViewStyle["overflow"] = overflow;
 
   // shadow
   if (shadow === "sm") {
@@ -116,14 +117,11 @@ const View: React.FC<Props> = ({
     ViewStyle["shadowOpacity"] = 0.32;
     ViewStyle["shadowRadius"] = 5.46;
   }
-  if (opacity) ViewStyle["opacity"] = opacity;
-  if (zIndex) ViewStyle["zIndex"] = zIndex;
-  if (overflow) ViewStyle["overflow"] = overflow;
 
   // flex
-  if (f) ViewStyle["flex"] = f;
-  if (align) ViewStyle["alignItems"] = align;
-  if (justify) ViewStyle["justifyContent"] = justify;
+  if (f) ContentStyle["flex"] = f;
+  if (align) ContentStyle["alignItems"] = align;
+  if (justify) ContentStyle["justifyContent"] = justify;
   if (row) ViewStyle["flexDirection"] = "row";
   if (col) ViewStyle["flexDirection"] = "column";
 
@@ -148,43 +146,49 @@ const View: React.FC<Props> = ({
   if (border) {
     const [w, c] = border.split(" ");
     ViewStyle["borderWidth"] = parseInt(w);
-    ViewStyle["borderColor"] = c === "primary" ? "red" : c;
+    ViewStyle["borderColor"] = c === "primary" ? Color.primary : c;
   }
   if (borderTop) {
     const [w, c] = borderTop.split(" ");
     ViewStyle["borderTopWidth"] = parseInt(w);
-    ViewStyle["borderTopColor"] = c === "primary" ? "red" : c;
+    ViewStyle["borderTopColor"] = c === "primary" ? Color.primary : c;
   }
 
   if (borderBot) {
     const [w, c] = borderBot.split(" ");
     ViewStyle["borderBottomWidth"] = parseInt(w);
-    ViewStyle["borderBottomColor"] = c === "primary" ? "red" : c;
+    ViewStyle["borderBottomColor"] = c === "primary" ? Color.primary : c;
   }
   if (borderLeft) {
     const [w, c] = borderLeft.split(" ");
     ViewStyle["borderLeftWidth"] = parseInt(w);
-    ViewStyle["borderLeftColor"] = c === "primary" ? "red" : c;
+    ViewStyle["borderLeftColor"] = c === "primary" ? Color.primary : c;
   }
   if (borderRight) {
     const [w, c] = borderRight.split(" ");
     ViewStyle["borderRightWidth"] = parseInt(w);
-    ViewStyle["borderRightColor"] = c === "primary" ? "red" : c;
+    ViewStyle["borderRightColor"] = c === "primary" ? Color.primary : c;
   }
   if (borderWidth) ViewStyle["borderWidth"] = borderWidth;
   if (borderStyle) ViewStyle["borderStyle"] = borderStyle;
   if (borderColor) ViewStyle["borderColor"] = borderColor;
 
   // border radius
-  if (round) ViewStyle["borderRadius"] = parseInt(round as string);
-  if (roundBotLeft)
+  if (round) {
+    ViewStyle["borderRadius"] = parseInt(round as string);
+  }
+  if (roundBotLeft) {
     ViewStyle["borderBottomLeftRadius"] = parseInt(roundBotLeft as string);
-  if (roundBotRight)
+  }
+  if (roundBotRight) {
     ViewStyle["borderBottomRightRadius"] = parseInt(roundBotRight as string);
-  if (roundTopLeft)
+  }
+  if (roundTopLeft) {
     ViewStyle["borderTopLeftRadius"] = parseInt(roundTopLeft as string);
-  if (roundTopRight)
+  }
+  if (roundTopRight) {
     ViewStyle["borderTopRightRadius"] = parseInt(roundTopRight as string);
+  }
 
   // padding
   if (p) ViewStyle["padding"] = parseInt(p as string);
@@ -204,17 +208,17 @@ const View: React.FC<Props> = ({
   if (my) ViewStyle["marginVertical"] = parseInt(my as string);
   if (mx) ViewStyle["marginHorizontal"] = parseInt(mx as string);
 
-  if (safe) {
-    return (
-      <SafeAreaView style={{ ...ViewStyle, ...(style as any) }} {...rest}>
-        {children}
-      </SafeAreaView>
-    );
-  }
   return (
-    <BaseView style={{ ...ViewStyle, ...(style as any) }} {...rest}>
+    <BaseScrollView
+      contentContainerStyle={{
+        ...ContentStyle,
+        ...(contentContainerStyle as any),
+      }}
+      style={{ ...ViewStyle, ...(style as any) }}
+      {...rest}
+    >
       {children}
-    </BaseView>
+    </BaseScrollView>
   );
 };
 
