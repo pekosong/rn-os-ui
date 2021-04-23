@@ -23,5 +23,10 @@ inspired from tailwind and chakra ui
 |m|margin|string or number| 
 |p|padding|string or number| 
 |bg|backgroundColor|string|
+|f|flex|string or number|
+|row|flexDirection|boolean|
+|col|flexDirection|boolean|
+|align|alignItems|string|
+|justify|justifyContent|string|
 |shadow|elevation in android|string|
 
