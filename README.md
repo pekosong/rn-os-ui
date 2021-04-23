@@ -7,9 +7,9 @@ inspired from tailwind and chakra ui
 ### npm install rn-os-ui
 
 ## **1. Intruduction**
-React Native UI Library<br/>
-Typescript supported<br/>
-inspired from tailwind and chakra ui
+#### - React Native UI Library<br/>
+#### - Typescript supported<br/>
+#### - inspired from tailwind and chakra ui
 
 
 ## **2. Compoments**
