@@ -3,12 +3,12 @@ React Native UI Library
 inspired from tailwind and chakra ui
 
 
-### 1. Intruduction
+## **1. Intruduction**
 React Native UI Library<br/>
 inspired from tailwind and chakra ui
 
 
-### 2. Compoments
+## **2. Compoments**
 #### - View
 #### - ScrollView
 #### - Text
@@ -16,7 +16,7 @@ inspired from tailwind and chakra ui
 #### - TouchableOpacity
 
 
-### 3. Props
+## **3. Props**
 |Prop|Css Prop|Type| 
 |:---|:---:|---:| 
 |d|display|string| 
