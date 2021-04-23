@@ -38,6 +38,6 @@ inspired from tailwind and chakra ui
 |row|flexDirection|boolean|-|
 |col|flexDirection|boolean|-|
 |align|alignItems|string|flex-start, flex-end, center, stretch, baseline|
-|justify|justifyContent|string|flex-start, flex-end, center, space-between, space-around, space-evenly|
+|justify|justifyContent|string|flex-start, flex-end, center<br/>space-between, space-around, space-evenly|
 |shadow|elevation in android, shadow in ios|string|sm, md, lg, xl|
 
