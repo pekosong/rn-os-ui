@@ -21,7 +21,7 @@ inspired from tailwind and chakra ui
 
 ### [표 넣기]
 |Prop|Css Prop|Type| 
-|:---|:---:|---:| 
+|:-----|:-----:|-----:| 
 |d|display|string| 
 |m|margin|string | number| 
 
