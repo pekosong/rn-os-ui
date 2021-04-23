@@ -20,12 +20,8 @@ inspired from tailwind and chakra ui
 
 
 ### [표 넣기]
-|왼쪽 정렬|가운데 정렬|오른쪽 정렬| 
+|Prop|Css Prop|Type| 
 |:---|:---:|---:| 
-|내용1|내용2|내용3| 
-|내용1|내용2|내용3| 
+|d|display|string| 
+|m|margin|string | number| 
 
-<br>
-
-### 정리내용
-[정리 내용 보기](https://lsh424.tistory.com/37)
