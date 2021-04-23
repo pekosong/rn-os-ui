@@ -23,6 +23,6 @@ inspired from tailwind and chakra ui
 |Prop|Css Prop|Type| 
 |:---|:---:|---:| 
 |d|display|string| 
-|m|margin|string | number| 
-|p|padding|string | number| 
+|m|margin|string or number| 
+|p|padding|string or number| 
 
