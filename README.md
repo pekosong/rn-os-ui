@@ -3,8 +3,8 @@ React Native UI Library
 inspired from tailwind and chakra ui
 
 ## **0. Install**
-https://www.npmjs.com/package/rn-os-ui
-npm install rn-os-ui
+### https://www.npmjs.com/package/rn-os-ui<br/>
+### npm install rn-os-ui
 
 ## **1. Intruduction**
 React Native UI Library<br/>
