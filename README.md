@@ -12,11 +12,11 @@ inspired from tailwind and chakra ui
 ###### H6 제목6
 
 # 2. Compoments
-1. View
-2. ScrollView
-3. Text
-4. Image
-5. TouchableOpacity
+### View
+### ScrollView
+### Text
+### Image
+### TouchableOpacity
 
 
 ### [표 넣기]
