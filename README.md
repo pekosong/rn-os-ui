@@ -10,9 +10,10 @@ inspired from tailwind and chakra ui
 #### - React Native UI Library<br/>
 #### - Typescript supported<br/>
 #### - inspired from tailwind and chakra ui
+<img src="https://github.com/pekosong/rn-os-ui/blob/master/Screenshot_20210423-155640_Expo%20Go.jpg?raw=true"  width="500" height="370">
 
 
-## **2. Compoments**
+ ## **2. Compoments**
 #### - View
 #### - ScrollView
 #### - Text
