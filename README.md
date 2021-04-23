@@ -25,4 +25,6 @@ inspired from tailwind and chakra ui
 |d|display|string| 
 |m|margin|string or number| 
 |p|padding|string or number| 
+|bg|backgroundColor|string|
+|shadow|elevation in android|string|
 
