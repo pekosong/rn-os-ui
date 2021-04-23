@@ -20,24 +20,29 @@ inspired from tailwind and chakra ui
 |Prop|Css Prop|Type|Description|  
 |:---:|:---:|:---:|:---:| 
 |d|display|string| flex, none|
-|m|margin|string or number|-|
-|mt|marginTop|string or number|-|
-|mb|marginBottom|string or number|-|
-|ml|marginLeft|string or number|-| 
-|mr|marginRight|string or number|-| 
-|my|marginVertical|string or number|-|
-|mx|marginHorizontal|string or number|-| 
-|pt|paddingTop|string or number|-|
-|pb|paddingBottom|string or number|-| 
-|pl|paddingLeft|string or number|-|
-|pr|paddingRight|string or number|-|
-|py|paddingVertical|string or number|-| 
-|px|paddingHorizontal|string or number|-|
+|m|margin|string, number|-|
+|mt|marginTop|string, number|-|
+|mb|marginBottom|string, number|-|
+|ml|marginLeft|string, number|-| 
+|mr|marginRight|string, number|-| 
+|my|marginVertical|string, number|-|
+|mx|marginHorizontal|string, number|-| 
+|pt|paddingTop|string, number|-|
+|pb|paddingBottom|string, number|-| 
+|pl|paddingLeft|string, number|-|
+|pr|paddingRight|string, number|-|
+|py|paddingVertical|string, number|-| 
+|px|paddingHorizontal|string, number|-|
 |bg|backgroundColor|string|hex, rgb|
-|f|flex|string or number||
+|f|flex|string, number||
 |row|flexDirection|boolean|-|
 |col|flexDirection|boolean|-|
 |align|alignItems|string|flex-start, flex-end, center, stretch, baseline|
 |justify|justifyContent|string|flex-start, flex-end, center<br/>space-between, space-around, space-evenly|
 |shadow|elevation in android, shadow in ios|string|sm, md, lg, xl|
+|round|borderRadius|string, number|-|
+|roundBotLeft|borderBottomLeftRadius|string, number|-|
+|roundBotRight|borderBottomRightRadius|string, number|-|
+|roundTopLeft|borderTopLeftRadius|string, number|-|
+|roundTopRight|borderTopRightRadius|string, number|-|
 
