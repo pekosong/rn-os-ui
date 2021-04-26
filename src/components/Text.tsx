@@ -2,7 +2,7 @@ import React from "react";
 import { Text as BaseText, TextProps, StyleProp } from "react-native";
 import { ColorProp, TextStyle, PaddingProp, MarginProp } from "../types/style";
 import { Color } from "../constants/color";
-import { setSpaceStyle } from "../utils/style";
+import { setColorStyle, setSpaceStyle } from "../utils/style";
 
 interface Props extends TextProps, TextStyle, PaddingProp, MarginProp {
   color?: ColorProp;
@@ -10,7 +10,6 @@ interface Props extends TextProps, TextStyle, PaddingProp, MarginProp {
 }
 
 const Text: React.FC<Props> = ({
-  color,
   size,
   textAlign,
   fontWeight,
@@ -29,17 +28,6 @@ const Text: React.FC<Props> = ({
     fontSize: 14,
     fontWeight: "400",
   };
-
-  // Color
-  if (color === "primary") Style["color"] = Color.primary;
-  if (color === "black") Style["color"] = Color.black;
-  if (color === "white") Style["color"] = Color.white;
-  if (color === "gray1") Style["color"] = Color.gray1;
-  if (color === "gray2") Style["color"] = Color.gray2;
-  if (color === "gray3") Style["color"] = Color.gray3;
-  if (color === "gray4") Style["color"] = Color.gray4;
-  if (color === "gray5") Style["color"] = Color.gray5;
-
   // fontStyle
   if (size) Style["fontSize"] = parseInt(size as string);
   if (fontFamily) Style["fontFamily"] = fontFamily;
@@ -50,6 +38,11 @@ const Text: React.FC<Props> = ({
   if (lineHeight) Style["lineHeight"] = lineHeight;
   if (textDecorationLine) Style["textDecorationLine"] = textDecorationLine;
   if (textDecorationStyle) Style["textDecorationStyle"] = textDecorationStyle;
+
+  Style = setColorStyle({
+    Style,
+    ...rest,
+  }) as TextStyle;
 
   Style = setSpaceStyle({
     Style,

@@ -6,8 +6,8 @@ import {
   StyleProp,
 } from "react-native";
 import { ColorProp, TextStyle, ExtendStyle } from "../types/style";
-import { Color } from "../constants/color";
 import {
+  setColorStyle,
   setBgStyle,
   setPositionStyle,
   setSizeStyle,
@@ -22,7 +22,6 @@ interface Props extends TextInputProps, TextProps, ExtendStyle {
 }
 
 const Text: React.FC<Props> = ({
-  color,
   size,
   textAlign,
   children,
@@ -34,14 +33,11 @@ const Text: React.FC<Props> = ({
   // fontStyle
   if (size) Style["fontSize"] = parseInt(size as string);
   if (textAlign) Style["textAlign"] = textAlign;
-  if (color === "primary") Style["color"] = Color.primary;
-  if (color === "black") Style["color"] = Color.black;
-  if (color === "white") Style["color"] = Color.white;
-  if (color === "gray1") Style["color"] = Color.gray1;
-  if (color === "gray2") Style["color"] = Color.gray2;
-  if (color === "gray3") Style["color"] = Color.gray3;
-  if (color === "gray4") Style["color"] = Color.gray4;
-  if (color === "gray5") Style["color"] = Color.gray5;
+
+  Style = setColorStyle({
+    Style,
+    ...rest,
+  }) as TextStyle;
 
   Style = setBgStyle({
     Style: Style,

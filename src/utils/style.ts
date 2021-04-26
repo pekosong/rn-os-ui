@@ -1,4 +1,38 @@
-import { Color } from "@constants/color";
+import { Color } from "../constants/color";
+
+export const setColorStyle = ({ Style, color }: any) => {
+  if (color) {
+    switch (color) {
+      case "primary":
+        Style["color"] = Color.primary;
+        break;
+      case "black":
+        Style["color"] = Color.black;
+        break;
+      case "white":
+        Style["color"] = Color.white;
+        break;
+      case "gray1":
+        Style["color"] = Color.gray1;
+        break;
+      case "gray2":
+        Style["color"] = Color.gray2;
+        break;
+      case "gray3":
+        Style["color"] = Color.gray3;
+        break;
+      case "gray4":
+        Style["color"] = Color.gray4;
+        break;
+      case "gray5":
+        Style["color"] = Color.gray5;
+      default:
+        Style["color"] = color;
+        break;
+    }
+  }
+  return Style;
+};
 
 export const setBgStyle = ({ Style, bg }: any) => {
   if (bg) {
