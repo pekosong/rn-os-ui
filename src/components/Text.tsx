@@ -1,8 +1,8 @@
 import React from "react";
 import { Text as BaseText, TextProps, StyleProp } from "react-native";
-import { ColorProp, TextStyle, PaddingProp, MarginProp } from "../types/style";
-import { setColorStyle, setSpaceStyle } from "../utils/style";
-import { useOsTheme } from "../contexts/useRnUi";
+import { ColorProp, TextStyle, PaddingProp, MarginProp } from "@type/style";
+import { setColorStyle, setSpaceStyle } from "@utils/style";
+import { useOsTheme } from "@contexts/useRnUi";
 
 interface Props extends TextProps, TextStyle, PaddingProp, MarginProp {
   color?: ColorProp;

@@ -6,7 +6,7 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
-import { ExtendStyle } from "../types/style";
+import { ExtendStyle } from "@type/style";
 import { SafeAreaViewProps } from "react-native-safe-area-context";
 import {
   setBgStyle,
@@ -16,8 +16,8 @@ import {
   setShadowStyle,
   setBorderStyle,
   setSpaceStyle,
-} from "../utils/style";
-import { useOsTheme } from "../contexts/useRnUi";
+} from "@utils/style";
+import { useOsTheme } from "@contexts/useRnUi";
 
 interface Props extends ViewProps, SafeAreaViewProps, ViewStyle, ExtendStyle {
   safe?: boolean;

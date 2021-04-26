@@ -5,8 +5,7 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
-import { useOsTheme } from "../contexts/useRnUi";
-import { ExtendStyle } from "../types/style";
+import { ExtendStyle } from "@type/style";
 import {
   setBgStyle,
   setPositionStyle,
@@ -15,7 +14,8 @@ import {
   setShadowStyle,
   setBorderStyle,
   setSpaceStyle,
-} from "../utils/style";
+} from "@utils/style";
+import { useOsTheme } from "@contexts/useRnUi";
 
 interface Props extends TouchableOpacityProps, ViewStyle, ExtendStyle {}
 

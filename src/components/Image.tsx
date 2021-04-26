@@ -5,9 +5,9 @@ import {
   ImageStyle,
   StyleProp,
 } from "react-native";
-import { ExtendStyle } from "../types/style";
-import { setSizeStyle, setSpaceStyle } from "../utils/style";
-import { useOsTheme } from "../contexts/useRnUi";
+import { ExtendStyle } from "@type/style";
+import { setSizeStyle, setSpaceStyle } from "@utils/style";
+import { useOsTheme } from "@contexts/useRnUi";
 
 interface Props extends ImageProps, ExtendStyle {
   d?: "none" | "flex";

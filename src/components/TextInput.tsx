@@ -5,8 +5,7 @@ import {
   TextProps,
   StyleProp,
 } from "react-native";
-import { useOsTheme } from "../contexts/useRnUi";
-import { ColorProp, TextStyle, ExtendStyle } from "../types/style";
+import { ColorProp, TextStyle, ExtendStyle } from "@type/style";
 import {
   setColorStyle,
   setBgStyle,
@@ -15,7 +14,8 @@ import {
   setBorderStyle,
   setSpaceStyle,
   setShadowStyle,
-} from "../utils/style";
+} from "@utils/style";
+import { useOsTheme } from "@contexts/useRnUi";
 
 interface Props extends TextInputProps, TextProps, ExtendStyle {
   color?: ColorProp;
