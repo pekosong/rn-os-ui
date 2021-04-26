@@ -67,7 +67,7 @@ const useOsTheme = () => {
     dispatch,
   } = useContext(store);
   const setTheme = useCallback(
-    async (payload) => {
+    async (payload: State) => {
       dispatch({ type: "SET_THEME", payload });
     },
     [dispatch]
