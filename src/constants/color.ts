@@ -1,5 +1,3 @@
-// https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-
 export class Color {
   static primary = "#23b400";
   static black = "#000000";
@@ -179,3 +177,5 @@ export class Lime {
   static lime800 = "#9E9D24";
   static lime900 = "#827717";
 }
+
+// https://material.io/design/color/the-color-system.html#tools-for-picking-colors

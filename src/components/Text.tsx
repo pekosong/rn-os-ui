@@ -1,38 +1,15 @@
 import React from "react";
-import {
-  Text as BaseText,
-  TextProps,
-  TextStyle,
-  StyleProp,
-} from "react-native";
-import { ColoProps, PaddingProp, MarginProp } from "../type/style";
-import { setColorStyle } from "../utils/style";
+import { Text as BaseText, TextProps, StyleProp } from "react-native";
+import { ColorProp, TextStyle, PaddingProp, MarginProp } from "../types/style";
+import { Color } from "../constants/color";
+import { setSpaceStyle } from "../utils/style";
 
-interface Props
-  extends TextProps,
-    ColoProps,
-    TextStyle,
-    PaddingProp,
-    MarginProp {
+interface Props extends TextProps, TextStyle, PaddingProp, MarginProp {
+  color?: ColorProp;
   size?: number | string | undefined;
 }
 
 const Text: React.FC<Props> = ({
-  p,
-  pt,
-  pb,
-  pr,
-  pl,
-  py,
-  px,
-  m,
-  mt,
-  mb,
-  mr,
-  ml,
-  my,
-  mx,
-  col,
   color,
   size,
   textAlign,
@@ -44,45 +21,43 @@ const Text: React.FC<Props> = ({
   textDecorationLine,
   textDecorationStyle,
   children,
+  style,
   ...rest
 }) => {
-  let style: StyleProp<TextStyle> = {};
+  let Style: StyleProp<TextStyle> = {
+    color: Color.black,
+    fontSize: 14,
+    fontWeight: "400",
+  };
 
   // Color
-  if (col) style = setColorStyle(style, col);
-  if (color) style["color"] = color;
+  if (color === "primary") Style["color"] = Color.primary;
+  if (color === "black") Style["color"] = Color.black;
+  if (color === "white") Style["color"] = Color.white;
+  if (color === "gray1") Style["color"] = Color.gray1;
+  if (color === "gray2") Style["color"] = Color.gray2;
+  if (color === "gray3") Style["color"] = Color.gray3;
+  if (color === "gray4") Style["color"] = Color.gray4;
+  if (color === "gray5") Style["color"] = Color.gray5;
 
   // fontStyle
-  if (size) style["fontSize"] = parseInt(size as string);
-  if (fontFamily) style["fontFamily"] = fontFamily;
-  if (fontWeight) style["fontWeight"] = fontWeight;
-  if (fontStyle) style["fontStyle"] = fontStyle;
-  if (textAlign) style["textAlign"] = textAlign;
-  if (letterSpacing) style["letterSpacing"] = letterSpacing;
-  if (lineHeight) style["lineHeight"] = lineHeight;
-  if (textDecorationLine) style["textDecorationLine"] = textDecorationLine;
-  if (textDecorationStyle) style["textDecorationStyle"] = textDecorationStyle;
+  if (size) Style["fontSize"] = parseInt(size as string);
+  if (fontFamily) Style["fontFamily"] = fontFamily;
+  if (fontWeight) Style["fontWeight"] = fontWeight;
+  if (fontStyle) Style["fontStyle"] = fontStyle;
+  if (textAlign) Style["textAlign"] = textAlign;
+  if (letterSpacing) Style["letterSpacing"] = letterSpacing;
+  if (lineHeight) Style["lineHeight"] = lineHeight;
+  if (textDecorationLine) Style["textDecorationLine"] = textDecorationLine;
+  if (textDecorationStyle) Style["textDecorationStyle"] = textDecorationStyle;
 
-  // padding
-  if (p) style["padding"] = parseInt(p as string);
-  if (pt) style["paddingTop"] = parseInt(pt as string);
-  if (pb) style["paddingBottom"] = parseInt(pb as string);
-  if (pr) style["paddingRight"] = parseInt(pr as string);
-  if (pl) style["paddingLeft"] = parseInt(pl as string);
-  if (py) style["paddingVertical"] = parseInt(py as string);
-  if (px) style["paddingHorizontal"] = parseInt(px as string);
-
-  // margin
-  if (m) style["margin"] = parseInt(m as string);
-  if (mt) style["marginTop"] = parseInt(mt as string);
-  if (mb) style["marginBottom"] = parseInt(mb as string);
-  if (mr) style["marginRight"] = parseInt(mr as string);
-  if (ml) style["marginLeft"] = parseInt(ml as string);
-  if (my) style["marginVertical"] = parseInt(my as string);
-  if (mx) style["marginHorizontal"] = parseInt(mx as string);
+  Style = setSpaceStyle({
+    Style,
+    ...rest,
+  }) as TextStyle;
 
   return (
-    <BaseText style={style} {...rest}>
+    <BaseText style={{ ...Style, ...(style as any) }} {...rest}>
       {children}
     </BaseText>
   );
