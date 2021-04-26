@@ -5,6 +5,7 @@ import {
   TextProps,
   StyleProp,
 } from "react-native";
+import { useOsTheme } from "../contexts/useRnUi";
 import { ColorProp, TextStyle, ExtendStyle } from "../types/style";
 import {
   setColorStyle,
@@ -28,6 +29,7 @@ const Text: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const { theme } = useOsTheme();
   let Style: StyleProp<TextStyle> = {};
 
   // fontStyle
@@ -36,11 +38,13 @@ const Text: React.FC<Props> = ({
 
   Style = setColorStyle({
     Style,
+    theme,
     ...rest,
   }) as TextStyle;
 
   Style = setBgStyle({
     Style: Style,
+    theme,
     ...rest,
   }) as TextStyle;
 
@@ -61,6 +65,7 @@ const Text: React.FC<Props> = ({
 
   Style = setBorderStyle({
     Style,
+    theme,
     ...rest,
   }) as TextStyle;
 

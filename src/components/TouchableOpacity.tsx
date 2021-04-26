@@ -5,6 +5,7 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
+import { useOsTheme } from "../contexts/useRnUi";
 import { ExtendStyle } from "../types/style";
 import {
   setBgStyle,
@@ -30,6 +31,7 @@ const TouchableOpacity: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const { theme } = useOsTheme();
   let Style: StyleProp<ViewStyle> = {};
 
   // view Style
@@ -41,6 +43,7 @@ const TouchableOpacity: React.FC<Props> = ({
 
   Style = setBgStyle({
     Style: Style,
+    theme,
     ...rest,
   }) as ViewStyle;
 
@@ -66,6 +69,7 @@ const TouchableOpacity: React.FC<Props> = ({
 
   Style = setBorderStyle({
     Style,
+    theme,
     ...rest,
   }) as ViewStyle;
 

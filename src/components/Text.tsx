@@ -1,8 +1,8 @@
 import React from "react";
 import { Text as BaseText, TextProps, StyleProp } from "react-native";
 import { ColorProp, TextStyle, PaddingProp, MarginProp } from "../types/style";
-import { Color } from "../constants/color";
 import { setColorStyle, setSpaceStyle } from "../utils/style";
+import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends TextProps, TextStyle, PaddingProp, MarginProp {
   color?: ColorProp;
@@ -23,8 +23,9 @@ const Text: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const { theme } = useOsTheme();
   let Style: StyleProp<TextStyle> = {
-    color: Color.black,
+    color: theme.black,
     fontSize: 14,
     fontWeight: "400",
   };
@@ -41,6 +42,7 @@ const Text: React.FC<Props> = ({
 
   Style = setColorStyle({
     Style,
+    theme,
     ...rest,
   }) as TextStyle;
 

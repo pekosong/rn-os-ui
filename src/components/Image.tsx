@@ -6,8 +6,8 @@ import {
   StyleProp,
 } from "react-native";
 import { ExtendStyle } from "../types/style";
-import { Color } from "../constants/color";
 import { setSizeStyle, setSpaceStyle } from "../utils/style";
+import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ImageProps, ExtendStyle {
   d?: "none" | "flex";
@@ -41,6 +41,7 @@ const Image: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const { theme } = useOsTheme();
   let ImageStyle: StyleProp<ImageStyle> = {};
 
   // image Style
@@ -54,7 +55,7 @@ const Image: React.FC<Props> = ({
   if (border) {
     const [w, c] = border.split(" ");
     ImageStyle["borderWidth"] = parseInt(w);
-    ImageStyle["borderColor"] = c === "primary" ? Color.primary : c;
+    ImageStyle["borderColor"] = c === "primary" ? theme.primary : c;
   }
   if (borderTop) {
     ImageStyle["borderTopWidth"] = parseInt(borderTop.split(" ")[0]);

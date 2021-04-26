@@ -17,6 +17,7 @@ import {
   setBorderStyle,
   setSpaceStyle,
 } from "../utils/style";
+import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ViewProps, SafeAreaViewProps, ViewStyle, ExtendStyle {
   safe?: boolean;
@@ -35,6 +36,7 @@ const View: React.FC<Props> = ({
   style,
   ...rest
 }) => {
+  const { theme } = useOsTheme();
   let Style: StyleProp<ViewStyle> = {};
 
   // view Style
@@ -46,6 +48,7 @@ const View: React.FC<Props> = ({
 
   Style = setBgStyle({
     Style: Style,
+    theme,
     ...rest,
   }) as ViewStyle;
 
@@ -71,6 +74,7 @@ const View: React.FC<Props> = ({
 
   Style = setBorderStyle({
     Style,
+    theme,
     ...rest,
   }) as ViewStyle;
 

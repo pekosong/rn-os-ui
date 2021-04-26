@@ -1,31 +1,29 @@
-import { Color } from "../constants/color";
-
-export const setColorStyle = ({ Style, color }: any) => {
+export const setColorStyle = ({ Style, theme, color }: any) => {
   if (color) {
     switch (color) {
       case "primary":
-        Style["color"] = Color.primary;
+        Style["color"] = theme.primary;
         break;
       case "black":
-        Style["color"] = Color.black;
+        Style["color"] = theme.black;
         break;
       case "white":
-        Style["color"] = Color.white;
+        Style["color"] = theme.white;
         break;
       case "gray1":
-        Style["color"] = Color.gray1;
+        Style["color"] = theme.gray1;
         break;
       case "gray2":
-        Style["color"] = Color.gray2;
+        Style["color"] = theme.gray2;
         break;
       case "gray3":
-        Style["color"] = Color.gray3;
+        Style["color"] = theme.gray3;
         break;
       case "gray4":
-        Style["color"] = Color.gray4;
+        Style["color"] = theme.gray4;
         break;
       case "gray5":
-        Style["color"] = Color.gray5;
+        Style["color"] = theme.gray5;
       default:
         Style["color"] = color;
         break;
@@ -34,32 +32,32 @@ export const setColorStyle = ({ Style, color }: any) => {
   return Style;
 };
 
-export const setBgStyle = ({ Style, bg }: any) => {
+export const setBgStyle = ({ Style, theme, bg }: any) => {
   if (bg) {
     switch (bg) {
       case "primary":
-        Style["backgroundColor"] = Color.primary;
+        Style["backgroundColor"] = theme.primary;
         break;
       case "black":
-        Style["backgroundColor"] = Color.black;
+        Style["backgroundColor"] = theme.black;
         break;
       case "white":
-        Style["backgroundColor"] = Color.white;
+        Style["backgroundColor"] = theme.white;
         break;
       case "gray1":
-        Style["backgroundColor"] = Color.gray1;
+        Style["backgroundColor"] = theme.gray1;
         break;
       case "gray2":
-        Style["backgroundColor"] = Color.gray2;
+        Style["backgroundColor"] = theme.gray2;
         break;
       case "gray3":
-        Style["backgroundColor"] = Color.gray3;
+        Style["backgroundColor"] = theme.gray3;
         break;
       case "gray4":
-        Style["backgroundColor"] = Color.gray4;
+        Style["backgroundColor"] = theme.gray4;
         break;
       case "gray5":
-        Style["backgroundColor"] = Color.gray5;
+        Style["backgroundColor"] = theme.gray5;
       default:
         Style["backgroundColor"] = bg;
         break;
@@ -198,6 +196,7 @@ export const setSpaceStyle = ({
 
 export const setBorderStyle = ({
   Style,
+  theme,
   border,
   borderTop,
   borderBot,
@@ -218,28 +217,28 @@ export const setBorderStyle = ({
     Style["borderWidth"] = parseInt(w);
     switch (c) {
       case "primary":
-        Style["borderColor"] = Color.primary;
+        Style["borderColor"] = theme.primary;
         break;
       case "black":
-        Style["borderColor"] = Color.black;
+        Style["borderColor"] = theme.black;
         break;
       case "white":
-        Style["borderColor"] = Color.white;
+        Style["borderColor"] = theme.white;
         break;
       case "gray1":
-        Style["borderColor"] = Color.gray1;
+        Style["borderColor"] = theme.gray1;
         break;
       case "gray2":
-        Style["borderColor"] = Color.gray2;
+        Style["borderColor"] = theme.gray2;
         break;
       case "gray3":
-        Style["borderColor"] = Color.gray3;
+        Style["borderColor"] = theme.gray3;
         break;
       case "gray4":
-        Style["borderColor"] = Color.gray4;
+        Style["borderColor"] = theme.gray4;
         break;
       case "gray5":
-        Style["borderColor"] = Color.gray5;
+        Style["borderColor"] = theme.gray5;
       default:
         Style["borderColor"] = c;
         break;
@@ -250,28 +249,28 @@ export const setBorderStyle = ({
     Style["borderTopWidth"] = parseInt(w);
     switch (c) {
       case "primary":
-        Style["borderTopColor"] = Color.primary;
+        Style["borderTopColor"] = theme.primary;
         break;
       case "black":
-        Style["borderTopColor"] = Color.black;
+        Style["borderTopColor"] = theme.black;
         break;
       case "white":
-        Style["borderTopColor"] = Color.white;
+        Style["borderTopColor"] = theme.white;
         break;
       case "gray1":
-        Style["borderTopColor"] = Color.gray1;
+        Style["borderTopColor"] = theme.gray1;
         break;
       case "gray2":
-        Style["borderTopColor"] = Color.gray2;
+        Style["borderTopColor"] = theme.gray2;
         break;
       case "gray3":
-        Style["borderTopColor"] = Color.gray3;
+        Style["borderTopColor"] = theme.gray3;
         break;
       case "gray4":
-        Style["borderTopColor"] = Color.gray4;
+        Style["borderTopColor"] = theme.gray4;
         break;
       case "gray5":
-        Style["borderTopColor"] = Color.gray5;
+        Style["borderTopColor"] = theme.gray5;
         break;
       default:
         Style["borderTopColor"] = c;
@@ -282,28 +281,28 @@ export const setBorderStyle = ({
     Style["borderBottomWidth"] = parseInt(w);
     switch (c) {
       case "primary":
-        Style["borderBottomColor"] = Color.primary;
+        Style["borderBottomColor"] = theme.primary;
         break;
       case "black":
-        Style["borderBottomColor"] = Color.black;
+        Style["borderBottomColor"] = theme.black;
         break;
       case "white":
-        Style["borderBottomColor"] = Color.white;
+        Style["borderBottomColor"] = theme.white;
         break;
       case "gray1":
-        Style["borderBottomColor"] = Color.gray1;
+        Style["borderBottomColor"] = theme.gray1;
         break;
       case "gray2":
-        Style["borderBottomColor"] = Color.gray2;
+        Style["borderBottomColor"] = theme.gray2;
         break;
       case "gray3":
-        Style["borderBottomColor"] = Color.gray3;
+        Style["borderBottomColor"] = theme.gray3;
         break;
       case "gray4":
-        Style["borderBottomColor"] = Color.gray4;
+        Style["borderBottomColor"] = theme.gray4;
         break;
       case "gray5":
-        Style["borderBottomColor"] = Color.gray5;
+        Style["borderBottomColor"] = theme.gray5;
         break;
       default:
         Style["borderBottomColor"] = c;
@@ -314,28 +313,28 @@ export const setBorderStyle = ({
     Style["borderLeftWidth"] = parseInt(w);
     switch (c) {
       case "primary":
-        Style["borderLeftColor"] = Color.primary;
+        Style["borderLeftColor"] = theme.primary;
         break;
       case "black":
-        Style["borderLeftColor"] = Color.black;
+        Style["borderLeftColor"] = theme.black;
         break;
       case "white":
-        Style["borderLeftColor"] = Color.white;
+        Style["borderLeftColor"] = theme.white;
         break;
       case "gray1":
-        Style["borderLeftColor"] = Color.gray1;
+        Style["borderLeftColor"] = theme.gray1;
         break;
       case "gray2":
-        Style["borderLeftColor"] = Color.gray2;
+        Style["borderLeftColor"] = theme.gray2;
         break;
       case "gray3":
-        Style["borderLeftColor"] = Color.gray3;
+        Style["borderLeftColor"] = theme.gray3;
         break;
       case "gray4":
-        Style["borderLeftColor"] = Color.gray4;
+        Style["borderLeftColor"] = theme.gray4;
         break;
       case "gray5":
-        Style["borderLeftColor"] = Color.gray5;
+        Style["borderLeftColor"] = theme.gray5;
         break;
       default:
         Style["borderLeftColor"] = c;
@@ -346,28 +345,28 @@ export const setBorderStyle = ({
     Style["borderRightWidth"] = parseInt(w);
     switch (c) {
       case "primary":
-        Style["borderRightColor"] = Color.primary;
+        Style["borderRightColor"] = theme.primary;
         break;
       case "black":
-        Style["borderRightColor"] = Color.black;
+        Style["borderRightColor"] = theme.black;
         break;
       case "white":
-        Style["borderRightColor"] = Color.white;
+        Style["borderRightColor"] = theme.white;
         break;
       case "gray1":
-        Style["borderRightColor"] = Color.gray1;
+        Style["borderRightColor"] = theme.gray1;
         break;
       case "gray2":
-        Style["borderRightColor"] = Color.gray2;
+        Style["borderRightColor"] = theme.gray2;
         break;
       case "gray3":
-        Style["borderRightColor"] = Color.gray3;
+        Style["borderRightColor"] = theme.gray3;
         break;
       case "gray4":
-        Style["borderRightColor"] = Color.gray4;
+        Style["borderRightColor"] = theme.gray4;
         break;
       case "gray5":
-        Style["borderRightColor"] = Color.gray5;
+        Style["borderRightColor"] = theme.gray5;
         break;
       default:
         Style["borderRightColor"] = c;

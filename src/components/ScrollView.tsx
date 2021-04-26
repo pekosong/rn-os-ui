@@ -5,6 +5,7 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
+import { useOsTheme } from "../contexts/useRnUi";
 import { ExtendStyle } from "../types/style";
 import {
   setBgStyle,
@@ -31,6 +32,8 @@ const View: React.FC<Props> = ({
   contentContainerStyle,
   ...rest
 }) => {
+  const { theme } = useOsTheme();
+
   let ViewStyle: StyleProp<ViewStyle> = {};
   const ContentStyle: StyleProp<ViewStyle> = {};
 
@@ -43,6 +46,7 @@ const View: React.FC<Props> = ({
 
   ViewStyle = setBgStyle({
     Style: ViewStyle,
+    theme,
     ...rest,
   }) as ViewStyle;
 
@@ -68,6 +72,7 @@ const View: React.FC<Props> = ({
 
   ViewStyle = setBorderStyle({
     Style: ViewStyle,
+    theme,
     ...rest,
   }) as ViewStyle;
 
