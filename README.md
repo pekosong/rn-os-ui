@@ -1,14 +1,17 @@
 # RN-OS-UI
+
 React Native UI Library<br/>
 Typescript supported<br/>
 inspired from tailwind and chakra ui
 
 ## **0. Install**
+
 ```
 npm install rn-os-ui
 ```
 
 ## **1. Use**
+
 ```
 import {
   Text,
@@ -16,10 +19,9 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
-  useOsTheme,
 } from "rn-os-ui";
 
-export default function Login() {
+export default function App() {
   return (
     <View flex={1} p="40">
       <View flex={1} />
@@ -27,7 +29,7 @@ export default function Login() {
         Login to your Account
       </Text>
       <Input placeholder="Email" />
-      <View w="10" />
+      <View h="10" />
       <Input placeholder="Password" />
       <TouchableOpacity
         mt="20"
@@ -36,7 +38,6 @@ export default function Login() {
         justify="center"
         round="8"
         shadow="sm"
-        onPress={handlePress}
       >
         <Text textAlign="center" color="white">
           Sign In
@@ -89,6 +90,7 @@ const SnsButton = ({ uri }: { uri: string }) => {
 ```
 
 ## **2. Compoments**
+
 - View
 - ScrollView
 - Text

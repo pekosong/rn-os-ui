@@ -93,7 +93,7 @@ export const setFlexStyle = ({
   col,
 }: any) => {
   // shadow
-  if (f) Style["flex"] = f;
+  if (f) Style["flex"] = parseInt(w as string);
   if (flex) Style["flex"] = flex;
   if (wrap) Style["flexWrap"] = wrap;
   if (align) Style["alignItems"] = align;
