@@ -4,12 +4,12 @@ Typescript supported<br/>
 inspired from tailwind and chakra ui
 
 ## **0. Install**
-```
+```javascript
 npm install rn-os-ui
 ```
 
 ## **1. Use**
-```
+```javascript
 import {
   Text,
   View,
