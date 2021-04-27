@@ -12,14 +12,8 @@ npm install rn-os-ui
 
 ## **1. Use**
 
-```
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Image,
-} from "rn-os-ui";
+```javascript
+import { Text, View, TouchableOpacity, TextInput, Image } from "rn-os-ui";
 
 export default function App() {
   return (
@@ -85,8 +79,6 @@ const SnsButton = ({ uri }: { uri: string }) => {
     </TouchableOpacity>
   );
 };
-
-
 ```
 
 ## **2. Compoments**
