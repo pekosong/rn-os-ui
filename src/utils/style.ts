@@ -173,7 +173,6 @@ export const setSpaceStyle = ({
   my,
   mx,
 }: any) => {
-  // border
   // padding
   if (p) Style["padding"] = parseInt(p as string);
   if (pt) Style["paddingTop"] = parseInt(pt as string);

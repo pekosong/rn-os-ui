@@ -5,9 +5,9 @@ import {
   ImageStyle,
   StyleProp,
 } from "react-native";
-import { ExtendStyle } from "@type/style";
-import { setSizeStyle, setSpaceStyle } from "@utils/style";
-import { useOsTheme } from "@contexts/useRnUi";
+import { ExtendStyle } from "../types/style";
+import { setSizeStyle, setSpaceStyle } from "../utils/style";
+import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ImageProps, ExtendStyle {
   d?: "none" | "flex";
@@ -15,85 +15,82 @@ interface Props extends ImageProps, ExtendStyle {
   resize?: "cover" | "contain" | "stretch" | "repeat" | "center";
 }
 
-const Image: React.FC<Props> = ({
-  //base
-  d,
-  display,
-  resize,
-  //position
-  pos,
-  //border
-  border,
-  borderTop,
-  borderBot,
-  borderLeft,
-  borderRight,
-  borderColor,
-  borderWidth,
-  //round
-  round,
-  roundBotLeft,
-  roundBotRight,
-  roundTopLeft,
-  roundTopRight,
-  //etc
-  children,
-  style,
-  ...rest
-}) => {
-  const { theme } = useOsTheme();
-  let ImageStyle: StyleProp<ImageStyle> = {};
+const Image: React.FC<Props> = (props) => {
+  const {
+    //base
+    d,
+    display,
+    resize,
+    //position
+    pos,
+    //border
+    border,
+    borderTop,
+    borderBot,
+    borderLeft,
+    borderRight,
+    borderColor,
+    borderWidth,
+    //round
+    round,
+    roundBotLeft,
+    roundBotRight,
+    roundTopLeft,
+    roundTopRight,
+    //etc
+    children,
+    style,
+    ...rest
+  } = props;
 
-  // image Style
-  if (d) ImageStyle["display"] = d;
-  if (display) ImageStyle["display"] = display;
-  if (resize) ImageStyle["resizeMode"] = resize;
+  const { theme } = useOsTheme();
+  let Style: StyleProp<ImageStyle> = {};
+
+  // base
+  if (d) Style["display"] = d;
+  if (display) Style["display"] = display;
+  if (resize) Style["resizeMode"] = resize;
+
   // position
-  if (pos) ImageStyle["position"] = pos;
+  if (pos) Style["position"] = pos;
 
   // border
   if (border) {
     const [w, c] = border.split(" ");
-    ImageStyle["borderWidth"] = parseInt(w);
-    ImageStyle["borderColor"] = c === "primary" ? theme.primary : c;
+    Style["borderWidth"] = parseInt(w);
+    Style["borderColor"] = c === "primary" ? theme.primary : c;
   }
   if (borderTop) {
-    ImageStyle["borderTopWidth"] = parseInt(borderTop.split(" ")[0]);
+    Style["borderTopWidth"] = parseInt(borderTop.split(" ")[0]);
   }
   if (borderBot) {
-    ImageStyle["borderBottomWidth"] = parseInt(borderBot.split(" ")[0]);
+    Style["borderBottomWidth"] = parseInt(borderBot.split(" ")[0]);
   }
   if (borderLeft) {
-    ImageStyle["borderLeftWidth"] = parseInt(borderLeft.split(" ")[0]);
+    Style["borderLeftWidth"] = parseInt(borderLeft.split(" ")[0]);
   }
   if (borderRight) {
-    ImageStyle["borderRightWidth"] = parseInt(borderRight.split(" ")[0]);
+    Style["borderRightWidth"] = parseInt(borderRight.split(" ")[0]);
   }
-  if (borderWidth) ImageStyle["borderWidth"] = borderWidth;
-  if (borderColor) ImageStyle["borderColor"] = borderColor;
-  // border radius
-  if (round) ImageStyle["borderRadius"] = parseInt(round as string);
+  if (borderWidth) Style["borderWidth"] = borderWidth;
+  if (borderColor) Style["borderColor"] = borderColor;
+
+  // round
+  if (round) Style["borderRadius"] = parseInt(round as string);
   if (roundBotLeft)
-    ImageStyle["borderBottomLeftRadius"] = parseInt(roundBotLeft as string);
+    Style["borderBottomLeftRadius"] = parseInt(roundBotLeft as string);
   if (roundBotRight)
-    ImageStyle["borderBottomRightRadius"] = parseInt(roundBotRight as string);
+    Style["borderBottomRightRadius"] = parseInt(roundBotRight as string);
   if (roundTopLeft)
-    ImageStyle["borderTopLeftRadius"] = parseInt(roundTopLeft as string);
+    Style["borderTopLeftRadius"] = parseInt(roundTopLeft as string);
   if (roundTopRight)
-    ImageStyle["borderTopRightRadius"] = parseInt(roundTopRight as string);
+    Style["borderTopRightRadius"] = parseInt(roundTopRight as string);
 
-  ImageStyle = setSizeStyle({
-    Style: ImageStyle,
-    ...rest,
-  }) as ImageStyle;
-
-  ImageStyle = setSpaceStyle({
-    Style: ImageStyle,
-    ...rest,
-  }) as ImageStyle;
+  Style = setSizeStyle({ Style, ...rest }) as ImageStyle;
+  Style = setSpaceStyle({ Style, ...rest }) as ImageStyle;
 
   return (
-    <BaseImage style={{ ...ImageStyle, ...(style as any) }} {...rest}>
+    <BaseImage style={{ ...Style, ...(style as any) }} {...rest}>
       {children}
     </BaseImage>
   );

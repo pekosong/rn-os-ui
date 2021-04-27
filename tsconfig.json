@@ -6,12 +6,6 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@utils/*": ["src/utils/*"],
-      "@type/*": ["src/types/*"],
-      "@contexts/*": ["src/contexts/*"]
-    }
+    "strict": true
   }
 }

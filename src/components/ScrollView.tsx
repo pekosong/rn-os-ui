@@ -5,7 +5,7 @@ import {
   ViewStyle,
   StyleProp,
 } from "react-native";
-import { ExtendStyle } from "@type/style";
+import { ExtendStyle } from "../types/style";
 import {
   setBgStyle,
   setPositionStyle,
@@ -14,72 +14,45 @@ import {
   setShadowStyle,
   setSpaceStyle,
   setBorderStyle,
-} from "@utils/style";
-import { useOsTheme } from "@contexts/useRnUi";
+} from "../utils/style";
+import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ScrollViewProps, ViewStyle, ExtendStyle {}
 
-const View: React.FC<Props> = ({
-  //base
-  d,
-  display,
-  overflow,
-  opacity,
-  zIndex,
-  //etc
-  children,
-  style,
-  contentContainerStyle,
-  ...rest
-}) => {
+const View: React.FC<Props> = (props) => {
+  const {
+    //base
+    d,
+    display,
+    overflow,
+    opacity,
+    zIndex,
+    //etc
+    children,
+    style,
+    contentContainerStyle,
+    ...rest
+  } = props;
+
   const { theme } = useOsTheme();
 
-  let ViewStyle: StyleProp<ViewStyle> = {};
+  let Style: StyleProp<ViewStyle> = {};
   const ContentStyle: StyleProp<ViewStyle> = {};
 
   // view Style
-  if (d) ViewStyle["display"] = d;
-  if (display) ViewStyle["display"] = display;
-  if (opacity) ViewStyle["opacity"] = opacity;
-  if (zIndex) ViewStyle["zIndex"] = zIndex;
-  if (overflow) ViewStyle["overflow"] = overflow;
+  if (d) Style["display"] = d;
+  if (display) Style["display"] = display;
+  if (opacity) Style["opacity"] = opacity;
+  if (zIndex) Style["zIndex"] = zIndex;
+  if (overflow) Style["overflow"] = overflow;
 
-  ViewStyle = setBgStyle({
-    Style: ViewStyle,
-    theme,
-    ...rest,
-  }) as ViewStyle;
-
-  ViewStyle = setPositionStyle({
-    Style: ViewStyle,
-    ...rest,
-  }) as ViewStyle;
-
-  ViewStyle = setFlexStyle({
-    Style: ViewStyle,
-    ...rest,
-  }) as ViewStyle;
-
-  ViewStyle = setSizeStyle({
-    Style: ViewStyle,
-    ...rest,
-  }) as ViewStyle;
-
-  ViewStyle = setShadowStyle({
-    Style: ViewStyle,
-    ...rest,
-  }) as ViewStyle;
-
-  ViewStyle = setBorderStyle({
-    Style: ViewStyle,
-    theme,
-    ...rest,
-  }) as ViewStyle;
-
-  ViewStyle = setSpaceStyle({
-    Style: ViewStyle,
-    ...rest,
-  }) as ViewStyle;
+  Style = setBgStyle({ Style, theme, ...rest }) as ViewStyle;
+  Style = setPositionStyle({ Style, ...rest }) as ViewStyle;
+  Style = setFlexStyle({ Style, ...rest }) as ViewStyle;
+  Style = setSizeStyle({ Style, ...rest }) as ViewStyle;
+  Style = setShadowStyle({ Style, ...rest }) as ViewStyle;
+  Style = setBorderStyle({ Style, theme, ...rest }) as ViewStyle;
+  Style = setSpaceStyle({ Style, ...rest }) as ViewStyle;
 
   return (
     <BaseScrollView
@@ -87,7 +60,7 @@ const View: React.FC<Props> = ({
         ...ContentStyle,
         ...(contentContainerStyle as any),
       }}
-      style={{ ...ViewStyle, ...(style as any) }}
+      style={{ ...Style, ...(style as any) }}
       {...rest}
     >
       {children}
