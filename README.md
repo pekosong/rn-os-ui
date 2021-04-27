@@ -1,31 +1,91 @@
 # RN-OS-UI
-
-React Native UI Library
+React Native UI Library<br/>
+Typescript supported<br/>
 inspired from tailwind and chakra ui
 
 ## **0. Install**
-
-### npm install rn-os-ui
-
-## **1. Intruduction**
-
-#### - React Native UI Library<br/>
-
-#### - Typescript supported<br/>
-
-#### - inspired from tailwind and chakra ui
-
-## **2. Use**
 ```
-const blacklist = require('metro-config/src/defaults/blacklist');
+npm install rn-os-ui
+```
 
-module.exports = {
-  resolver: {
-    blacklistRE: blacklist([
-      /ios\/Pods\/JitsiMeetSDK\/Frameworks\/JitsiMeet.framework\/assets\/node_modules\/react-native\/.*/,
-    ]),
-  },
+## **1. Use**
+```
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+  Image,
+  useOsTheme,
+} from "rn-os-ui";
+
+export default function Login() {
+  return (
+    <View flex={1} p="40">
+      <View flex={1} />
+      <Text size="20" fontWeight="bold" mb="20">
+        Login to your Account
+      </Text>
+      <Input placeholder="Email" />
+      <View w="10" />
+      <Input placeholder="Password" />
+      <TouchableOpacity
+        mt="20"
+        bg="#23049d"
+        h="50"
+        justify="center"
+        round="8"
+        shadow="sm"
+        onPress={handlePress}
+      >
+        <Text textAlign="center" color="white">
+          Sign In
+        </Text>
+      </TouchableOpacity>
+      <Text textAlign="center" mt="40" mb="20" color="#aaa">
+        - Or sign in with -
+      </Text>
+      <View row>
+        <SnsButton uri="https://cdn.icon-icons.com/icons2/2699/PNG/512/google_logo_icon_169090.png" />
+        <View w="10" />
+        <SnsButton uri="https://recruit.navercorp.com/img/favicon/naver_favicon.ico" />
+        <View w="10" />
+        <SnsButton uri="https://upload.wikimedia.org/wikipedia/commons/f/f2/Kakao_logo.jpg" />
+      </View>
+      <View flex={1} />
+    </View>
+  );
+}
+
+const Input = ({ placeholder }: { placeholder: string }) => {
+  return (
+    <TextInput
+      placeholder={placeholder}
+      h="50"
+      px="10"
+      bg="#fff"
+      round="8"
+      shadow="sm"
+    />
+  );
 };
+
+const SnsButton = ({ uri }: { uri: string }) => {
+  return (
+    <TouchableOpacity
+      flex={1}
+      bg="#fff"
+      shadow="sm"
+      p="10"
+      round="8"
+      align="center"
+    >
+      <Image source={{ uri }} w="24" h="24" />
+    </TouchableOpacity>
+  );
+};
+
+
 ```
 
 ## **2. Compoments**
