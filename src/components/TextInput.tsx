@@ -22,7 +22,7 @@ interface Props extends TextInputProps, TextProps, ExtendStyle {
   size?: number | string | undefined;
 }
 
-const Text: React.FC<Props> = (props) => {
+const TextInput: React.FC<Props> = (props) => {
   const { size, textAlign, children, style, ...rest } = props;
 
   const { theme } = useOsTheme();
@@ -47,4 +47,4 @@ const Text: React.FC<Props> = (props) => {
   );
 };
 
-export default Text;
+export default TextInput;

@@ -19,7 +19,7 @@ import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ScrollViewProps, ViewStyle, ExtendStyle {}
 
-const View: React.FC<Props> = (props) => {
+const ScrollView: React.FC<Props> = (props) => {
   const {
     //base
     d,
@@ -68,4 +68,4 @@ const View: React.FC<Props> = (props) => {
   );
 };
 
-export default View;
+export default ScrollView;
