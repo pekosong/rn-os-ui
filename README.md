@@ -89,16 +89,12 @@ const SnsButton = ({ uri }: { uri: string }) => {
 ```
 
 ## **2. Compoments**
-
-#### - View
-
-#### - ScrollView
-
-#### - Text
-
-#### - Image
-
-#### - TouchableOpacity
+- View
+- ScrollView
+- Text
+- Image
+- TouchableOpacity
+- TextInput
 
 ## **3. Props**
 
