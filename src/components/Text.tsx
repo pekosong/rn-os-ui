@@ -5,13 +5,16 @@ import { setColorStyle, setSpaceStyle } from "../utils/style";
 import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends TextProps, TextStyle, PaddingProp, MarginProp {
+  flex?: number;
   color?: ColorProp;
-  size?: number | string | undefined;
+  size?: number | string;
+  children: React.ReactNode;
 }
 
-const Text: React.FC<Props> = (props) => {
+const Text = React.forwardRef<BaseText, Props>((props, ref) => {
   const {
     size,
+    flex,
     textAlign,
     fontWeight,
     fontStyle,
@@ -20,8 +23,8 @@ const Text: React.FC<Props> = (props) => {
     lineHeight,
     textDecorationLine,
     textDecorationStyle,
-    children,
     style,
+    children,
     ...rest
   } = props;
 
@@ -32,6 +35,7 @@ const Text: React.FC<Props> = (props) => {
     fontWeight: "400",
   };
 
+  if (flex) Style["flex"] = flex;
   // fontStyle
   if (size) Style["fontSize"] = parseInt(size as string);
   if (fontFamily) Style["fontFamily"] = fontFamily;
@@ -47,10 +51,10 @@ const Text: React.FC<Props> = (props) => {
   Style = setSpaceStyle({ Style, ...rest }) as TextStyle;
 
   return (
-    <BaseText style={{ ...Style, ...(style as any) }} {...rest}>
+    <BaseText ref={ref} style={{ ...Style, ...(style as any) }} {...rest}>
       {children}
     </BaseText>
   );
-};
+});
 
-export default Text;
+export default React.memo(Text);

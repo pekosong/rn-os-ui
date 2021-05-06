@@ -85,6 +85,10 @@ export interface PositionProp {
   maxW?: number | string;
   minH?: number | string;
   minW?: number | string;
+  right?: number | string;
+  top?: number | string;
+  left?: number | string;
+  bottom?: number | string;
 }
 
 export interface ExtendStyle

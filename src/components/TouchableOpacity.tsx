@@ -17,45 +17,53 @@ import {
 } from "../utils/style";
 import { useOsTheme } from "../contexts/useRnUi";
 
-interface Props extends TouchableOpacityProps, ViewStyle, ExtendStyle {}
+interface Props extends TouchableOpacityProps, ViewStyle, ExtendStyle {
+  children?: JSX.Element;
+}
 
-const TouchableOpacity: React.FC<Props> = (props) => {
-  const {
-    //base
-    d,
-    display,
-    overflow,
-    opacity,
-    zIndex,
-    //etc
-    children,
-    style,
-    ...rest
-  } = props;
+const TouchableOpacity = React.forwardRef<BaseTouchableOpacity, Props>(
+  (props, ref) => {
+    const {
+      //base
+      d,
+      display,
+      overflow,
+      opacity,
+      zIndex,
+      //etc
+      children,
+      style,
+      ...rest
+    } = props;
 
-  const { theme } = useOsTheme();
-  let Style: StyleProp<ViewStyle> = {};
+    const { theme } = useOsTheme();
+    let Style: StyleProp<ViewStyle> = {};
 
-  // view Style
-  if (d) Style["display"] = d;
-  if (display) Style["display"] = display;
-  if (opacity) Style["opacity"] = opacity;
-  if (zIndex) Style["zIndex"] = zIndex;
-  if (overflow) Style["overflow"] = overflow;
+    // view Style
+    if (d) Style["display"] = d;
+    if (display) Style["display"] = display;
+    if (opacity) Style["opacity"] = opacity;
+    if (zIndex) Style["zIndex"] = zIndex;
+    if (overflow) Style["overflow"] = overflow;
 
-  Style = setBgStyle({ Style, theme, ...rest }) as ViewStyle;
-  Style = setPositionStyle({ Style, ...rest }) as ViewStyle;
-  Style = setFlexStyle({ Style, ...rest }) as ViewStyle;
-  Style = setSizeStyle({ Style, ...rest }) as ViewStyle;
-  Style = setShadowStyle({ Style, ...rest }) as ViewStyle;
-  Style = setBorderStyle({ Style, theme, ...rest }) as ViewStyle;
-  Style = setSpaceStyle({ Style, ...rest }) as ViewStyle;
+    Style = setBgStyle({ Style, theme, ...rest }) as ViewStyle;
+    Style = setPositionStyle({ Style, ...rest }) as ViewStyle;
+    Style = setFlexStyle({ Style, ...rest }) as ViewStyle;
+    Style = setSizeStyle({ Style, ...rest }) as ViewStyle;
+    Style = setShadowStyle({ Style, ...rest }) as ViewStyle;
+    Style = setBorderStyle({ Style, theme, ...rest }) as ViewStyle;
+    Style = setSpaceStyle({ Style, ...rest }) as ViewStyle;
 
-  return (
-    <BaseTouchableOpacity style={{ ...Style, ...(style as any) }} {...rest}>
-      {children}
-    </BaseTouchableOpacity>
-  );
-};
+    return (
+      <BaseTouchableOpacity
+        ref={ref}
+        style={{ ...Style, ...(style as any) }}
+        {...rest}
+      >
+        {children}
+      </BaseTouchableOpacity>
+    );
+  }
+);
 
-export default TouchableOpacity;
+export default React.memo(TouchableOpacity);

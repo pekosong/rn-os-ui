@@ -17,9 +17,11 @@ import {
 } from "../utils/style";
 import { useOsTheme } from "../contexts/useRnUi";
 
-interface Props extends ScrollViewProps, ViewStyle, ExtendStyle {}
+interface Props extends ScrollViewProps, ViewStyle, ExtendStyle {
+  children?: React.ReactNode;
+}
 
-const ScrollView: React.FC<Props> = (props) => {
+const ScrollView = React.forwardRef<BaseScrollView, Props>((props, ref) => {
   const {
     //base
     d,
@@ -56,6 +58,7 @@ const ScrollView: React.FC<Props> = (props) => {
 
   return (
     <BaseScrollView
+      ref={ref}
       contentContainerStyle={{
         ...ContentStyle,
         ...(contentContainerStyle as any),
@@ -66,6 +69,6 @@ const ScrollView: React.FC<Props> = (props) => {
       {children}
     </BaseScrollView>
   );
-};
+});
 
-export default ScrollView;
+export default React.memo(ScrollView);

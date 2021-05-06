@@ -28,7 +28,7 @@ const defaultTheme = {
   gray2: "#666666",
   gray3: "#808080",
   gray4: "#bfbfbf",
-  gray5: "#eaeaea",
+  gray5: "#f6f6f6",
 };
 
 const initialState = { theme: defaultTheme };

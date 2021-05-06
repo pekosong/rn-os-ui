@@ -16,14 +16,14 @@ import {
   setShadowStyle,
 } from "../utils/style";
 import { useOsTheme } from "../contexts/useRnUi";
-
 interface Props extends TextInputProps, TextProps, ExtendStyle {
   color?: ColorProp;
-  size?: number | string | undefined;
+  size?: number | string;
+  flex?: number;
 }
 
-const TextInput: React.FC<Props> = (props) => {
-  const { size, textAlign, children, style, ...rest } = props;
+const TextInput = React.forwardRef<BaseTextInput, Props>((props, ref) => {
+  const { size, textAlign, style, ...rest } = props;
 
   const { theme } = useOsTheme();
   let Style: StyleProp<TextStyle> = {};
@@ -41,10 +41,12 @@ const TextInput: React.FC<Props> = (props) => {
   Style = setSpaceStyle({ Style, ...rest }) as TextStyle;
 
   return (
-    <BaseTextInput style={{ ...Style, ...(style as any) }} {...rest}>
-      {children}
-    </BaseTextInput>
+    <BaseTextInput
+      ref={ref}
+      style={{ ...Style, ...(style as any) }}
+      {...rest}
+    />
   );
-};
+});
 
-export default TextInput;
+export default React.memo(TextInput);

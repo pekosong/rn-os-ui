@@ -6,7 +6,7 @@ import {
   StyleProp,
 } from "react-native";
 import { ExtendStyle } from "../types/style";
-import { setSizeStyle, setSpaceStyle } from "../utils/style";
+import { setSizeStyle, setSpaceStyle, setPositionStyle } from "../utils/style";
 import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ImageProps, ExtendStyle {
@@ -15,14 +15,12 @@ interface Props extends ImageProps, ExtendStyle {
   resize?: "cover" | "contain" | "stretch" | "repeat" | "center";
 }
 
-const Image: React.FC<Props> = (props) => {
+const Image = React.forwardRef<BaseImage, Props>((props, ref) => {
   const {
     //base
     d,
     display,
     resize,
-    //position
-    pos,
     //border
     border,
     borderTop,
@@ -38,7 +36,6 @@ const Image: React.FC<Props> = (props) => {
     roundTopLeft,
     roundTopRight,
     //etc
-    children,
     style,
     ...rest
   } = props;
@@ -50,9 +47,6 @@ const Image: React.FC<Props> = (props) => {
   if (d) Style["display"] = d;
   if (display) Style["display"] = display;
   if (resize) Style["resizeMode"] = resize;
-
-  // position
-  if (pos) Style["position"] = pos;
 
   // border
   if (border) {
@@ -87,13 +81,12 @@ const Image: React.FC<Props> = (props) => {
     Style["borderTopRightRadius"] = parseInt(roundTopRight as string);
 
   Style = setSizeStyle({ Style, ...rest }) as ImageStyle;
+  Style = setPositionStyle({ Style, ...rest }) as ImageStyle;
   Style = setSpaceStyle({ Style, ...rest }) as ImageStyle;
 
   return (
-    <BaseImage style={{ ...Style, ...(style as any) }} {...rest}>
-      {children}
-    </BaseImage>
+    <BaseImage ref={ref} style={{ ...Style, ...(style as any) }} {...rest} />
   );
-};
+});
 
-export default Image;
+export default React.memo(Image);

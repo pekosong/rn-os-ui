@@ -6,7 +6,7 @@ export class Color {
   static gray2 = "#666666";
   static gray3 = "#808080";
   static gray4 = "#bfbfbf";
-  static gray5 = "#eaeaea";
+  static gray5 = "#f6f6f6";
 }
 
 export class Gray {

@@ -24,6 +24,7 @@ export const setColorStyle = ({ Style, theme, color }: any) => {
         break;
       case "gray5":
         Style["color"] = theme.gray5;
+        break;
       default:
         Style["color"] = color;
         break;
@@ -58,6 +59,7 @@ export const setBgStyle = ({ Style, theme, bg }: any) => {
         break;
       case "gray5":
         Style["backgroundColor"] = theme.gray5;
+        break;
       default:
         Style["backgroundColor"] = bg;
         break;
@@ -75,16 +77,15 @@ export const setPositionStyle = ({
   bottom,
 }: any) => {
   if (pos) Style["position"] = pos;
-  if (top) Style["top"] = top;
-  if (bottom) Style["bottom"] = bottom;
-  if (left) Style["left"] = left;
-  if (right) Style["right"] = right;
+  if (top) Style["top"] = parseInt(top as string);
+  if (bottom) Style["bottom"] = parseInt(bottom as string);
+  if (left) Style["left"] = parseInt(left as string);
+  if (right) Style["right"] = parseInt(right as string);
   return Style;
 };
 
 export const setFlexStyle = ({
   Style,
-  f,
   flex,
   wrap,
   align,
@@ -92,15 +93,12 @@ export const setFlexStyle = ({
   row,
   col,
 }: any) => {
-  // shadow
-  if (f) Style["flex"] = f;
   if (flex) Style["flex"] = flex;
   if (wrap) Style["flexWrap"] = wrap;
   if (align) Style["alignItems"] = align;
   if (justify) Style["justifyContent"] = justify;
   if (row) Style["flexDirection"] = "row";
   if (col) Style["flexDirection"] = "column";
-
   return Style;
 };
 
@@ -173,6 +171,7 @@ export const setSpaceStyle = ({
   my,
   mx,
 }: any) => {
+  // border
   // padding
   if (p) Style["padding"] = parseInt(p as string);
   if (pt) Style["paddingTop"] = parseInt(pt as string);
@@ -238,6 +237,7 @@ export const setBorderStyle = ({
         break;
       case "gray5":
         Style["borderColor"] = theme.gray5;
+        break;
       default:
         Style["borderColor"] = c;
         break;

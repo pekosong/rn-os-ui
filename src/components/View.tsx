@@ -23,9 +23,11 @@ import { useOsTheme } from "../contexts/useRnUi";
 
 interface Props extends ViewProps, SafeAreaViewProps, ViewStyle, ExtendStyle {
   safe?: boolean;
+  children?: React.ReactNode;
+  edges?: any[];
 }
 
-const View: React.FC<Props> = (props) => {
+const View = React.forwardRef<BaseView, Props>((props, ref) => {
   const {
     //base
     d,
@@ -37,6 +39,7 @@ const View: React.FC<Props> = (props) => {
     //etc
     children,
     style,
+    edges = ["top"],
     ...rest
   } = props;
 
@@ -60,16 +63,21 @@ const View: React.FC<Props> = (props) => {
 
   if (safe) {
     return (
-      <SafeAreaView style={{ ...Style, ...(style as any) }} {...rest}>
+      <SafeAreaView
+        edges={edges}
+        style={{ ...Style, ...(style as any) }}
+        {...rest}
+      >
         {children}
       </SafeAreaView>
     );
   }
+
   return (
-    <BaseView style={{ ...Style, ...(style as any) }} {...rest}>
+    <BaseView ref={ref} style={{ ...Style, ...(style as any) }} {...rest}>
       {children}
     </BaseView>
   );
-};
+});
 
-export default View;
+export default React.memo(View);
