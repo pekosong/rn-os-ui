@@ -96,7 +96,7 @@ const SnsButton = ({ uri }: { uri: string }) => {
 |  Prop   |    Css Prop    |  Type   |                                Description                                 |
 | :-----: | :------------: | :-----: | :------------------------------------------------------------------------: |
 | display |    display     | string  |                                 flex, none                                 |
-|  flex   |      flex      | string  |                                                                            |
+|  flex   |      flex      | number  |                                                                            |
 |   row   | flexDirection  | boolean |                                     -                                      |
 |   col   | flexDirection  | boolean |                                     -                                      |
 |  align  |   alignItems   | string  |              flex-start, flex-end, center, stretch, baseline               |
