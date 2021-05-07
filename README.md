@@ -13,6 +13,7 @@ npm install rn-os-ui
 ## **1. Use**
 
 ```javascript
+import React from "react";
 import { Text, View, TouchableOpacity, TextInput, Image } from "rn-os-ui";
 
 export default function App() {
@@ -92,14 +93,14 @@ const SnsButton = ({ uri }: { uri: string }) => {
 
 ## **3. Props**
 
-|    Prop    |    Css Prop    |      Type      |                                Description                                 |
-| :--------: | :------------: | :------------: | :------------------------------------------------------------------------: |
-| d, display |    display     |     string     |                                 flex, none                                 |
-|  f, flex   |      flex      | string, number |                                                                            |
-|    row     | flexDirection  |    boolean     |                                     -                                      |
-|    col     | flexDirection  |    boolean     |                                     -                                      |
-|   align    |   alignItems   |     string     |              flex-start, flex-end, center, stretch, baseline               |
-|  justify   | justifyContent |     string     | flex-start, flex-end, center<br/>space-between, space-around, space-evenly |
+|  Prop   |    Css Prop    |  Type   |                                Description                                 |
+| :-----: | :------------: | :-----: | :------------------------------------------------------------------------: |
+| display |    display     | string  |                                 flex, none                                 |
+|  flex   |      flex      | string  |                                                                            |
+|   row   | flexDirection  | boolean |                                     -                                      |
+|   col   | flexDirection  | boolean |                                     -                                      |
+|  align  |   alignItems   | string  |              flex-start, flex-end, center, stretch, baseline               |
+| justify | justifyContent | string  | flex-start, flex-end, center<br/>space-between, space-around, space-evenly |
 
 ## **4. Margin / Padding Props**
 
